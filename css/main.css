@@ -1,5 +1,6 @@
 html, body
 {
+  text-align: center;  
   margin:5px;
 }
 
@@ -7,10 +8,11 @@ html, body
 {
   display:flex;
   background-color:SaddleBrown;
-  height:200px;
-  width:800px;
+  height:100px;
+  width:400px;
   border-radius:50px;
-  padding:30px;
+  padding:25px;
+  margin: 0 auto;
 }
 
 .section
@@ -47,10 +49,10 @@ html, body
   border-radius:50px;
 }
 
-.bead
+/* .bead
 {
   position:absolute;
 	border-radius: 50%;
 	width: 25px;
 	height: 25px;
-}
+} */
