@@ -1,11 +1,9 @@
-html, body
-{
+html, body {
   text-align: center;  
   margin:5px;
 }
 
-.board
-{
+.board {
   display:flex;
   background-color:SaddleBrown;
   height:100px;
@@ -15,33 +13,28 @@ html, body
   margin: 0 auto;
 }
 
-.section
-{
+.section {
   background-color:rgba(255, 255, 255, 0.03);
   margin:5px;
 }
 
-.mancala
-{
+.mancala {
   display:flex;
   flex-grow:1;
 }
 
-.middle
-{
+.middle {
   display:flex;
   flex-direction:column;
   flex-grow:6;
 }
 
-.midrow
-{
+.midrow {
   display:flex;
   flex-grow:1;
 }
 
-.pocket
-{
+.pocket {
   position:relative;
   background-color:rgba(255, 255, 255, 0.08);
   flex-grow:1;

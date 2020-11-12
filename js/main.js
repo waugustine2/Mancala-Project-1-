@@ -18,8 +18,8 @@ const playGame = document.getElementById('play');
 /*----- event listeners -----*/
 document.querySelector('.board').addEventListener('click', handleMove);
 document.getElementById('play').addEventListener('click', init);
-//document.querySelector('message').addEventListener('click', dispMsg);
-//document.querySelector('#rules').addEventListener('click', dispRules);
+document.querySelector('#message').addEventListener('click', dispMsg);
+document.querySelector('#rules').addEventListener('click', dispRules);
 
 
 /*----- functions -----*/
@@ -42,11 +42,9 @@ function render() {
         const div = document.getElementById(`p${idx}`);
         div.textContent = numStones;
     })
-
 };
 
 function handleMove(evt) {
-    console.log()
     //Check if valid move (own side + has stones)
     let row = (turn === 1) ?  'top' : 'btm';
     //Get ID of move
@@ -58,52 +56,55 @@ function handleMove(evt) {
     render();
 };
 
-// function moveStones() {
-//     for(i = 0; i <= numOfStones; i++) { // possibly just = needed
-//         board[pitIndex] = 0;
-//         board[i] += 1;
-//     if(board[pitIndex] === 0 && turn === -1) {
-//         board[0] += 0;
-//     } else if (board[pitIndex] === 7 && turn === 1) {
-//         board[7] += 0;
-//     }
-//   }
+function moveStones() {
+    for(i = 0; i <= numOfStones; i++) { // possibly just = needed
+        board[pitIndex] = 0;
+        board[i] += 1;
+    if(board[pitIndex] === 0 && turn === -1) {
+        board[0] += 0;
+    } else if (board[pitIndex] === 7 && turn === 1) {
+        board[7] += 0;
+    }
+  }
 
-//     //push stone over counter-clockwise deposit one in each pocket
-//     // for loop for pocketid.length
-//     //If pass own Mancala depsoit one stone
-//     //Do not put one in opponents pocket
-//     //if turn !==
+    //push stone over counter-clockwise deposit one in each pocket
+    // for loop for pocketid.length
+    //If pass own Mancala depsoit one stone
+    //Do not put one in opponents pocket
+    //if turn !==
 
-//     //If last stone depsoited in own Mancala retake turn and display message
-//     //Check for game over status (one side out of stones)
-//     gameOver();
-//     //otherwise update scores and turn
+    //If last stone depsoited in own Mancala retake turn and display message
+    
+    //If last stone deposited in empty pocket on own side take opponent's stones directly accross
+    emptyAcross();
+    //Check for game over status (one side out of stones)
+    gameOver();
+    //otherwise update scores and turn
+ };
 
-// };
-
-// function gameOver() {
-//     //checks if one side of board no longer has stones (no value if row summed accross)
-//     if(sum === 0) {
-//         for (i=1; i<=6; i++) {
-//         sum += board[i];
-//         };
-//      return true;
-//     }
-//     if(sum === 0) {
-//         for (i=7; i<=12; i++) {
-//         sum += board[i];
-//         };
-//         return true;
-//     };
-//     //if so then adds other player's stones to their Mancala
-//     finalStones();
-//     //if so then checks for winner
-//     checkWinner();
-// };
+function gameOver() {
+    //checks if one side of board no longer has stones (no value if row summed accross)
+    if(sum === 0) {
+        for (i=1; i<=6; i++) {
+        sum += board[i];
+        };
+     finalStones();
+     checkWinner();
+    
+    }
+    if(sum === 0) {
+        for (i=7; i<=12; i++) {
+        sum += board[i];
+        };
+        finalStones();
+        checkWinner();
+    };
+    //if so then adds other player's stones to their Mancala
+    //if so then checks for winner
+};
 
 // function finalStones() {
-//     //stones that still remain on board are added to their player's Mancala
+//     //moves remaining stones to corresponding mancala
 // };
 
 // function checkWinner() {
@@ -116,7 +117,13 @@ function handleMove(evt) {
 // };
 
 
-// function dispMsg() {};
+ function dispMsg() {};
 
-// function dispRules() {};
-
+ function dispRules(evt) {
+    let text = document.getElementById('rulesBlurb');
+    if (text.style.display === "none") {
+        text.style.display = "block";
+      } else {
+        text.style.display = "none";
+      }
+ };
